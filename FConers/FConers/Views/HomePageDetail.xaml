@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FConers.Views.HomePageDetail"
+             Title="Detail">
+    <ContentPage.ToolbarItems >
+
+        <ToolbarItem Name="Menu1">
+            <ToolbarItem.Icon >
+                <OnPlatform x:TypeArguments="FileImageSource"
+          Android="logo.png"  />
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+
+    </ContentPage.ToolbarItems>
+
+    <StackLayout Padding="0">
+
+        <StackLayout VerticalOptions="Center" HorizontalOptions="FillAndExpand" BackgroundColor="Green">
+            <SearchBar BackgroundColor="DarkGreen"  Margin="20,0,20,10" ></SearchBar>
+        </StackLayout>
+        <Label Text="Featured"/>
+        <!--<ListView 
+              SeparatorVisibility="None"
+                      ItemsSource="{Binding BookCategories}"
+             HasUnevenRows="False">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Image Source="{Binding Image}" Aspect="AspectFit"/>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>-->
+        <!--<cv:CarouselView x:Name="Info" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <cv:CarouselView.ItemTemplate>
+                <DataTemplate>
+                    -->
+        <!--<Image Source="{Binding image}" Aspect="AspectFit"></Image>-->
+        <!--
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Image Grid.RowSpan="2" Aspect="AspectFit" Source="{Binding image}"/>
+
+                    </Grid>
+                </DataTemplate>
+            </cv:CarouselView.ItemTemplate>
+        </cv:CarouselView>-->
+        <!--</ListView>-->
+        <Label Text="Categories"/>
+        <StackLayout>
+            <ListView x:Name="categorylist"
+              SeparatorVisibility="None"
+                      ItemsSource="{Binding BookCategories}"
+              HasUnevenRows="true">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <!--<StackLayout Padding="15,10" Margin="30,20" HorizontalOptions="FillAndExpand" BackgroundColor="{Binding color}">-->
+
+                            <Button Text="{Binding CategoryName}"
+                                    TextColor="White"
+                                    FontSize="Medium"
+                                    Command="{Binding Path=BindingContext.SelectCategoryCommand, Source = {x:Reference categorylist}}"
+                                    CommandParameter="{Binding .}"
+                                            VerticalOptions="FillAndExpand"
+                                            HorizontalOptions="FillAndExpand"
+                                            Margin="30,10"
+                                            BorderRadius="2"
+                                            BackgroundColor="{Binding Color}"/>
+                            <!--</StackLayout>-->
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>
